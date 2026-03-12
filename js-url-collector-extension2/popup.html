@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS URL Collector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-top">
+        <h1 class="title">JS URL Collector</h1>
+        <div class="toggle-container">
+          <label class="toggle">
+            <input type="checkbox" id="enableToggle" checked>
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label" id="toggleLabel">Enabled</span>
+        </div>
+      </div>
+      <p class="subtitle">Collect JavaScript URLs from network requests</p>
+    </header>
+
+    <div class="controls">
+      <div class="filter-group">
+        <label for="domainFilter" class="filter-label">Filter by Domain:</label>
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="domainFilter" 
+            placeholder="e.g., target.com" 
+            class="filter-input"
+          >
+          <button id="filterBtn" class="btn btn-primary">Filter</button>
+        </div>
+      </div>
+      
+      <div class="stats">
+        <span class="stat-item">
+          <span class="stat-label">Total JS URLs:</span>
+          <span class="stat-value" id="totalCount">0</span>
+        </span>
+        <span class="stat-item">
+          <span class="stat-label">Filtered:</span>
+          <span class="stat-value" id="filteredCount">0</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="copyAllBtn" class="btn btn-secondary">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copy All Filtered
+      </button>
+      <button id="clearBtn" class="btn btn-danger">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </svg>
+        Clear All
+      </button>
+    </div>
+
+    <div class="url-list-container">
+      <div class="url-list-header">
+        <span>JavaScript URLs</span>
+        <button id="refreshBtn" class="btn-icon-only" title="Refresh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="url-list" id="urlList">
+        <div class="empty-state">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <p>No JavaScript URLs collected yet.</p>
+          <p class="hint">Browse websites to collect JS URLs</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Tip: Click on a URL to copy it individually</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
