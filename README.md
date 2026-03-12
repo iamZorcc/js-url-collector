@@ -14,7 +14,7 @@ A Chrome extension that collects JavaScript URLs from network requests and allow
 1. Open Chrome and navigate to `chrome://extensions/`
 2. Enable **Developer mode** (toggle in the top right corner)
 3. Click **Load unpacked**
-4. Select the `js-url-collector-extension` folder
+4. Select the `js-url-collector-extension2` folder
 5. The extension icon will appear in your toolbar
 
 ## Usage
@@ -38,7 +38,7 @@ A Chrome extension that collects JavaScript URLs from network requests and allow
 ## Files Structure
 
 ```
-js-url-collector-extension/
+js-url-collector-extension2/
 ├── manifest.json      # Extension configuration
 ├── background.js      # Service worker for capturing requests
 ├── popup.html         # Extension popup UI
